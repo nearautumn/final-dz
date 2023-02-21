@@ -1,8 +1,10 @@
-﻿string[] textInitial = GetStringArrayFromUser(); // создание массива из строк
+﻿Console.Clear();
 
-//string[] textFinal = GetTextLessThanThree(textInitial); // определяем элементы размером менее 3 символов и записвываем в новый массив
+string[] text = GetStringArrayFromUser(); // создание массива из строк
 
-//PrintArrays(textInitial, textFinal); // выводим в консоль первоначальный массив и конечный
+PrintStringArray(text); // вывод созданного массива
+
+PrintTextLessThanThree(text); // определяем элементы размером менее 3 символов и выводим
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 string[] GetStringArrayFromUser() 
@@ -19,3 +21,29 @@ string[] GetStringArrayFromUser()
 
     return stringArray;
 }
+
+void PrintStringArray(string[] stringArray) 
+{
+    Console.Write("[");
+    for (int i = 0; i < stringArray.Length; i++) 
+    {
+        Console.Write($"'{stringArray[i]}' ");
+    }
+    Console.Write("]");
+}
+
+
+void PrintTextLessThanThree(string[] stringArray) 
+{
+    Console.Write(" -> [");
+    for (int i = 0; i < stringArray.Length; i++) 
+    {
+        int count = 0;
+        foreach (char symbol in stringArray[i])
+        {
+            if (symbol > 0) count++;
+        }
+        if (count <= 3) Console.Write($"'{stringArray[i]}' ");
+    }
+    Console.Write("]");
+} 
